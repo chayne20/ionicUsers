@@ -15,7 +15,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "baseHref":"/ionicUsers/",
-            "outputPath": "/home/jason/mean.example.com/public/ionicUsers",
+            "outputPath": "/home/chayne20/mean.example1.com/public/ionicUsers",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",

@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
+import { LoadingController } from '@ionic/angular';
+
 import { CookieService } from 'ngx-cookie-service';
+
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-logout',
@@ -10,14 +13,17 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./logout.page.scss'],
 })
 export class LogoutPage {
+  loading: any;
 
   constructor(
     private authService: AuthService,
     private router: Router,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    public loadingCtrl: LoadingController
   ) { }
 
   ionViewWillEnter() { 
+    this.presentLoader();
     this.logout();
   }
 
@@ -28,6 +34,13 @@ export class LogoutPage {
         window.location.href='/ionicUsers';
       }
     );
+  }
+
+  async presentLoader() {
+    this.loading = await this.loadingCtrl.create({
+      message: 'Loading'
+    });
+    await this.loading.present();
   }
 
 }
